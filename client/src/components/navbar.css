@@ -1,0 +1,37 @@
+.navbar {
+    padding: 0 !important;
+    position :absolute !important;
+    top:20px;
+    z-index: 9999999;
+    background: transparent;
+    width:100%;
+    margin:0 auto;
+    background: rgba(0, 0, 0, .2);
+}
+.grad {
+    background-image: linear-gradient(red, yellow);
+}
+.nav-back{
+    background: rgb(1, 231, 143);
+}
+.nav-item{
+    padding: 8px;
+    transition: all .3s ease-in-out;
+}
+.navbar-brand,
+.navbar-brand:hover,
+.navbar-brand:focus{
+    /* color:#D25565 */
+    color: #0e4e86;
+    font-weight: bolder;
+}
+.nav-link{
+    color :#FFF;
+    transition: all .5s ease
+}
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active
+ {
+    color:#0e4e86
+}

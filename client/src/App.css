@@ -1,0 +1,252 @@
+#root{
+    position: relative;
+    color :#000 !important;
+}
+/*GLOBAL*/
+
+/* @font-face {
+    font-family:Univia Pro;
+    src: url(UniviaPro-Light.otf);
+    font-weight: normal;
+}
+p,span,a,div,buttom
+{
+    font-family: Univia Pro;
+}
+h1,h2,h3,h4
+{
+    font-family: Univia Pro;
+    font-weight :bold
+} */
+*
+{
+    font-family: 'Tajawal', sans-serif;
+}
+button, input, optgroup, select, textarea,h1,h2,h3,h4,h5,h6,p,a,span
+{
+    font-family: 'Tajawal', sans-serif !important;
+}
+h4{
+    color:#51a1e8;
+    font-weight:bold;
+}
+h2 {
+    color :#FFF
+}
+/** Footer **/
+.footer {
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    z-index: 99999;
+    background :transparent;
+    color: #FFF;
+}
+
+/** LogIN, Signup **/
+.formStyle{
+    float: none !important;
+    max-width: 450px;
+    /* margin: 10% auto 0 auto; */
+    border-radius: 10px;
+    padding: 40px 25px;
+    /* background: rgba(66, 65, 65, 0.4); */
+    background:rgba(8, 6, 6, 0.4);
+    -webkit-box-shadow: 8px 26px 129px -30px rgba(0,0,0,1);
+    -moz-box-shadow: 8px 26px 129px -30px rgba(0,0,0,1);
+    box-shadow: 8px 26px 129px -30px rgba(0,0,0,1);
+}
+.or-seperator {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    width : 45%;
+    float: left;
+}
+.formStyle i {
+    padding: 0 10px;
+    background:transparent;
+    position: relative;
+    top: 7px;
+    left: 3px;
+    z-index: 1;
+    width:10%;
+    float: left;
+} 
+/* .error-border{
+    border :1px solid rgb(88, 5, 5) !important;
+    color :rgb(88, 5, 5) !important
+} */
+.error-text {
+    color :rgb(88, 5, 5);
+    font-size:12px;
+    font-weight :bold
+}
+.formpage {
+    padding-bottom: 55px;
+    padding-top:7%
+}
+.formpageLogin{
+    padding-bottom: 55px;
+    padding-top:10%
+}
+.formStyle button {
+    background: #0e4e86;
+    color: #FFF;
+    transition: all 0.5s ease
+}
+.formStyle button:hover,
+.formStyle button:focus
+ {
+    background: #093a66;
+    color: #FFF;
+}
+/** Sign up **/
+.signupPadding{
+    /* margin :7% auto 0 auto; */
+    padding :35px 20px;
+}
+/** Create Paper **/
+.createpaper-layout{
+    background :rgba(2,2,2,0.8) 
+}
+.createpaper-layout label {
+    color :#FFF
+}
+/** Papers **/
+.papers-scroll{
+    overflow-y:scroll
+}
+.paperpage {
+    padding-bottom: 55px
+}
+.paperpage h2 {
+    border-top:1px solid
+}
+.papercard{
+    color:#000;
+    border-radius:20px;
+    box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    margin-bottom:15px
+}
+.papercardmy:hover .paperinfo{
+    background:#72afe6
+}
+.paperimg {
+    border-radius:50%;
+    width:70% !important;
+    margin:15px auto;
+    border:1px solid #DDD
+}
+.paperinfo {
+    font-size:14px;
+    box-shadow:0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    transition :all 0.5s ease
+}
+.paperinfo h6
+ {
+    font-size:14px
+}
+.card-group {
+    margin-top :40px
+}
+.card h4 {
+    color :#222
+}
+.card button,
+.landing-layout button{
+    /* background: rgb(189, 86, 99);
+    border-color: rgb(189, 86, 99); */
+    background:#337ab7;
+    border-color:#337ab7;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+    transition: all 0.7s ease
+}
+.card button:hover,
+.card button:focus,
+.landing-layout button:hover,
+.landing-layout button:focus
+ {
+    /* background: rgb(180, 64, 80);
+    border-color: rgb(180, 64, 80); */
+    background:#337ab7;
+    border-color:#337ab7;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.8) !important;
+}
+.landing-layout button,
+.landing-layout button:hover,
+.landing-layout button:focus{
+    box-shadow: none
+}
+/** My Papers **/
+.my-container{
+    margin-left: 60px;
+    margin-top: 9%;
+    font-weight :normal
+}
+
+/** Actions **/
+.action-a .navbar-nav {
+    padding: 0
+}
+.action-a button,
+.action-a a{
+    color :#FFF;
+    line-height: 0.8;
+    transition: all 0.8s ease !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-right: 1px solid;
+    transition: all 0.5s ease
+}
+.action-a button:hover,
+.action-a a:hover {
+    background:#43bcd8;
+    color :#FFF;
+}
+.dragbtn{
+    display: inline-flex;
+    border: 0;
+    padding: 0;
+    margin:0;
+    background: transparent;
+    color: white;
+    border-right:1px solid;
+}
+.dragbtn i{
+    transition: all 0.5s ease;
+}
+.dragbtn:hover i{
+    color:#43bcd8
+}
+.action-a a i {
+    font-size:15px;
+    padding-right: 5px
+}
+/**Modal**/
+.modal{
+    z-index: 99999999999;
+}
+.correctionMode{
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color: rgba(5, 4, 4, 0.9);
+    z-index: 999999999;
+}
+.custom-switch
+{
+    z-index: 9999999999 ;
+}
+.screenshot{
+    position: relative;
+    z-index: 9999999999;
+}
+.modestyle {
+    padding-top: 7px;
+    margin-left: 40px;
+}

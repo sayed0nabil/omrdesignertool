@@ -1,0 +1,19 @@
+
+.paper{
+    width: 80%;
+    height: 50px;
+    border-radius: 10px;
+    background: #EEE;
+    margin: 10px auto;
+}
+
+.linkStyle{
+    background: transparent;
+    border: none;
+    color: blue;
+}
+.linkStyle:hover{
+    text-decoration: underline;
+}
+
+
