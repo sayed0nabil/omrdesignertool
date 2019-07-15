@@ -46,7 +46,7 @@ const CorrectionPaper = (props) => {
                     pointer: 'cursor',
                     color: item.color,
                     background: item.backgroundt === 'none'?item.background:item.backgroundt,
-                    backgroundImage: item.img !== 'none' && item.img?`url(${require(`../data/${props.userId}/${item.img}`)})`:null,
+                    backgroundImage: item.img !== 'none' && item.img?`url(${item.img})`:null,
                     backgroundSize: '100% 100%',
                     justifyContent: item.textAlign,
                     alignItems: item.alignItems,
