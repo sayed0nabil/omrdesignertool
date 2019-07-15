@@ -33,7 +33,6 @@ router.post('/register', (req, res) => {
                     password: req.body.password1,
                 });
                 newUser.save().then(user=>{
-                    shelljs.mkdir('-p', path.resolve(`client/src/data/${user.id}`));
                     res.send(user);
                 }).catch(err=>res.status(400).send(err));
             }

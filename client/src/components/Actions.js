@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 class Actions extends Component {
   render() {
     return (
-        <nav
+        <div
         style={{
           width: '100%',
           color:'white',
-          background:'#2E94B9'
+          background:'#2E94B9',
+          textAlign:'center'
         }}
-        className="navbar-expand-lg action-a">
-        <div className="collapse papernavactions navbar-collapse" id="navbarSupportedContent">
+        className="action-a">
+        <div className="papernavactions" id="">
             <div 
-            className="navbar-nav">
+            className="">
             <span 
             style={{
               display: 'inline-flex',
@@ -73,7 +74,7 @@ class Actions extends Component {
             <div className='' id='correctionMode'></div>
             </div>
             </div>
-        </nav>
+        </div>
     )
   }
 }

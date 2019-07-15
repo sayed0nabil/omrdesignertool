@@ -1,0 +1,64 @@
+/* Smart Phones And Tablets */
+@media (max-width :767px)
+{
+    /** Navbar **/
+    .navbar-toggler{
+        background-color: #888;
+    }
+    .navbar-nav {
+        background: #888
+    }
+    .navbar {
+        padding-left:10px !important;
+        padding-right:10px !important
+    }
+    /** Actions **/
+    .data {
+        position: static
+    }
+    /** Landing Page **/
+    .landing-layout h1{
+        font-size :30px !important
+    }
+    .landing-layout {
+        font-size : 14px
+    }
+    .landing-layout .align-div {
+        background-color: transparent
+    }
+    /** Login Page **/
+    .formpageLogin, .formpage{
+        padding-top: 20%
+    }
+    .pass1, .pass2 {
+        padding-left:0;
+        padding-right:0
+    }
+    .paperheight {
+        padding-left:0
+    }
+}
+/* Small Screens */
+@media (min-width :768px) and (max-width :991px)
+{
+    .navbar-toggler{
+        background-color: #888;
+    }
+    .navbar-nav {
+        background: #888
+    }
+    .navbar {
+        padding-left:10px !important;
+        padding-right:10px !important
+    }
+}
+/* Medium Screens */
+@media (min-width :992px) and (max-width :1199px)
+{
+    
+}
+/* Large Screens */
+@media (min-width :1200px)
+{
+    
+}

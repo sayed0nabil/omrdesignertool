@@ -1,8 +1,10 @@
 
+const path = require('path');
 // Built-in node modules
 const fs = require('fs');
 const  express = require('express'),
        passport = require('passport'),
+       shelljs  = require('shelljs');
        router  = express.Router();
 // Custom Models
 const Paper = require('../../models/Paper'),
@@ -79,39 +81,39 @@ router.post('/createpaper', passport.authenticate('jwt', {session:false}), (req,
                 })
             }
             else{
+                if(req.body.dataImages){
+                    req.body.dataImages.images.forEach(img => {
+                        const newImage = new Image({
+                            name: img.name,
+                            user: req.user._id,
+                            link: img.link
+                        })
+                        newImage.save();
+                    })
+                }
                 const newPaper = new Paper({
                     name: req.body.name,
                     access,
-                    user: req.user._id
+                    user: req.user._id,
+                    content: JSON.stringify({
+                        width: req.body.width,
+                        height: req.body.height,
+                        background: req.body.bg,
+                        filename: req.body.name,
+                        questionBlockArray: req.body.questionBlockArray?req.body.questionBlockArray:[],
+                        contentBlockArray: req.body.contentBlockArray?req.body.contentBlockArray:[],
+                        seatNumber: req.body.seatNumber?req.body.seatNumber: {},
+                        modelNumber: req.body.modelNumber?req.body.modelNumber:{}
+                    })
                 });
-                const path = `client/src/data/${req.user.id}/${req.body.name}.txt`;
-                const data = JSON.stringify({
-                    width: req.body.width,
-                    height: req.body.height,
-                    background: req.body.bg,
-                    filename: req.body.name,
-                    questionBlockArray: req.body.questionBlockArray?req.body.questionBlockArray:[],
-                    contentBlockArray: req.body.contentBlockArray?req.body.contentBlockArray:[],
-                    seatNumber: req.body.seatNumber?req.body.seatNumber: {},
-                    modelNumber: req.body.modelNumber?req.body.modelNumber:{}
-                });
-                fs.appendFile(path, data, (err) => {
-                    if(err)
-                        res.status(400).send({
-                            file: 'Can\'t write on file something failed'
-                        });
-                    else{
-                        newPaper.save()
-                        .then(paper => {
-                            res.send(paper);
-                        })
-                        .catch(err => {
-                            res.status(400).send({
-                                db: 'something go failed'
-                            })
-                        })
-                    }
-
+                newPaper.save()
+                .then(paper => {
+                    res.send(paper);
+                })
+                .catch(err => {
+                    res.status(400).send({
+                        db: 'something go failed'
+                    })
                 })
             }
         })
@@ -127,11 +129,10 @@ router.get('/preview/:paperId/:userId', (req, res) => {
     Paper.findById(req.params.paperId)
     .then(paper => {
         if(paper){
-            const content = fs.readFileSync(`client/src/data/${req.params.userId}/${paper.name}.txt`);
             Image.find({user: req.params.userId})
             .then( images => {
                 res.send({
-                    ...JSON.parse(content),
+                    ...JSON.parse(paper.content),
                     images
                 });
             })
@@ -151,20 +152,12 @@ router.get('/preview/:paperId/:userId', (req, res) => {
 // @desc   Edit Logged User Paper
 // @access Public
 router.post('/edit', passport.authenticate('jwt', {session:false}), (req, res) => {
-    Paper.findById(req.body.paperId)
+    Paper.findByIdAndUpdate(req.body.paperId, {
+        content: req.body.data
+    }, {new: true})
     .then(paper => {
         if(paper){
-            if(String(paper.user) === req.user.id){
-                fs.writeFile(`client/src/data/${paper.user}/${paper.name}.txt`, req.body.data, (err) => {
-                    if(err) res.status(400).send(err);
-                    else res.send(paper);
-                })
-            }
-            else{
-                res.status(401).send({
-                    paper: 'paper can not modify from this user'
-                })
-            }
+            res.send(paper);
         }else{
             res.status(404).send({
                 paper: 'paper not found'
@@ -186,12 +179,7 @@ router.post('/delete', passport.authenticate('jwt', {session:false}), (req, res)
     })
     .then( paper => {
         if(paper){
-            fs.unlink(`client/src/data/${paper.user}/${paper.name}.txt`, (err) => {
-                if(err) res.status(400).send({
-                    paper: 'can not delete text file'
-                });
-                else res.send(paper);
-            })
+            res.send(paper)
         }else{
             res.status(404).send({
                 paper: 'paper not found'

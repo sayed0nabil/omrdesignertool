@@ -11,6 +11,9 @@ const paperSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    content: {
+        type: String
+    },
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'

@@ -33,7 +33,7 @@ export default function ContentBlockProperties({
                                 {images.map(image => (
                                     <option 
                                     key={image._id}
-                                    value={image.name}>{image.name}</option>
+                                    value={image.link}>{image.name}</option>
                                 ))}
                             </select>
                         </div>

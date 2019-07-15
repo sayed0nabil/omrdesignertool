@@ -676,7 +676,32 @@ class PaperPreview extends Component {
       })
     }
   }
+  x = [];
+  getAllChildren  = cb =>{
+      if(cb.rows === 1 && cb.cols === 1){
+        if(cb.childrends){
+          if(cb.childrends[0].img && cb.childrends[0].img !== 'none'){
+            this.x.push(cb.childrends[0].img);
+          }
+        }else if( cb.img !== 'none' && cb.img){
+          this.x.push(cb.img);
+        }
+      }else{
+        if(cb.childrends){
+          cb.childrends.forEach(child => {
+            this.getAllChildren(child);
+          })
+        }
+      }
+  }
   takeIt = (e) =>{
+    this.state.contentBlockArray.forEach(cb => {
+      this.getAllChildren(cb);
+    });
+    const dataImages = {
+      userId: this.props.match.params.userId,
+      images: this.x
+    }
     const { isAuthenticated } = this.props.auth;
     if(isAuthenticated){
       const data = {
@@ -687,7 +712,8 @@ class PaperPreview extends Component {
         bg    : this.state.background,
         questionBlockArray: this.state.questionBlockArray,
         contentBlockArray: this.state.contentBlockArray,
-        seatNumber: this.state.seatNumber
+        seatNumber: this.state.seatNumber,
+        dataImages
       }
       axios.post('/api/papers/createpaper', data)
       .then( result => {
@@ -1004,7 +1030,7 @@ class PaperPreview extends Component {
                 </div>
               );
         return (
-          <div style={{position:'relative', paddingBottom:'49px', paddingTop: '35px', background:'rgba(2,2,2,0.6)'}}>
+          <div style={{position:'relative', paddingBottom:'49px', paddingTop: '35px', background:'rgba(148, 144, 144, 0.6)'}}>
             <div className='overflow-hidden pt-5'>
                 
               <div style={

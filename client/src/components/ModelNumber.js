@@ -1,5 +1,5 @@
 import React from 'react'
-
+import $ from 'jquery'
 function ModelNumber({
      modelNumber, 
      modelNumberDeterminedf, 
@@ -21,16 +21,31 @@ function ModelNumber({
     let models = [];
     for(let i=1; i<=noModels; i++)
         models.push(i);
+    const fun = modelNumberDeterminedf?modelNumberDeterminedf:()=>(null)
+    let fun2 = () => (null);
+    if(!modelNumberDeterminedf)
+        fun2 = (e) => {
+            if(e.target.style.background === 'transparent'){
+                e.target.style.background = 'black';
+                let sibling = e.target.parentNode.firstChild;
+                while(sibling){
+                    if(sibling != e.target)
+                        sibling.style.background = 'transparent';
+                    sibling = sibling.nextSibling
+                }
+            }else e.target.style.background = 'transparent';
+        }
     if(modelNumberDetermined){
         return(
             <div 
             id='modelNumber'
             onClick={(e)=>{
                 e.stopPropagation();
-                modelNumberDeterminedf()
+                fun();
             }
         }
-        onKeyDown={controlModelNumberWithKeyboard} tabIndex="0"
+        onKeyDown={modelNumberDetermined?controlModelNumberWithKeyboard:null}
+        tabIndex={modelNumberDetermined?"0":null}
         style={{
             position: 'absolute',
             left: x + 'px',
@@ -41,7 +56,8 @@ function ModelNumber({
             gridColumnGap: gridColumnGap + 'px',
             gridRowGap: gridRowGap + 'px',
             color,
-            background
+            background,
+            cursor: 'pointer'
         }}>
         {models.map(model => (
             <div 
@@ -55,7 +71,9 @@ function ModelNumber({
                 height: bubbleWidth,
                 borderRadius: '50%',
                 border: borderWidth + 'px solid ' + color
-            }}>
+            }}
+            onClick={fun2}
+            >
                 {model}
             </div>
         ))}
@@ -67,7 +85,7 @@ function ModelNumber({
             id='modelNumber'
             onClick={(e)=>{
                 e.stopPropagation();
-                modelNumberDeterminedf()
+                fun()
             }
         }
         style={{
@@ -94,7 +112,8 @@ function ModelNumber({
                 height: bubbleWidth,
                 borderRadius: '50%',
                 border: borderWidth + 'px solid ' + color
-            }}>
+            }}
+            onClick={fun2}>
                 {model}
             </div>
         ))}

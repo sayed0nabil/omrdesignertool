@@ -38,7 +38,6 @@
     position: relative;
     top: 30%;
     border-radius: 10px;
-    background: rgba(0, 0, 0, .3);
     padding: 20px;
 }
 .landing-layout .align-div h1 {
@@ -46,7 +45,6 @@
     margin-bottom: 25px
 }
 .landing-layout .align-div p{ 
-    font-size:13px;
     font-weight: normal;
     margin-bottom: 40px
 }
@@ -69,13 +67,4 @@
     background: transparent !important;
     box-shadow: 0 20px 25px rgba(0, 0, 0, 0.8) !important;
     border-color: transparent !important;
-}
-.nav-item{
-    transition: all .4s ease-in-out;
-}
-.nav-item:hover{
-    background: black;
-}
-.nav-item a{
-    color: white !important;
 }

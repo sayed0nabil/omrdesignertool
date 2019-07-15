@@ -6,7 +6,6 @@
     background: transparent;
     width:100%;
     margin:0 auto;
-    background: rgba(0, 0, 0, .2);
 }
 .grad {
     background-image: linear-gradient(red, yellow);

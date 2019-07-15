@@ -26,10 +26,10 @@ class Landing extends Component{
           <div className='landing-layout'>
               <div className='container align-div'>
                 <h1 className="text-center">O<sub>ptical</sub> M<sub>anpulation</sub> R<sub>aw</sub> Designer Tool</h1>
-                <h3 className="text-center p-3">
+                <p className="text-center p-3">
                 I's a web application that give doctor ability to 
                 create his own answers sheets and take screenshot of it and
-                also can downlaod json file that taken for evaulation process</h3>
+                also can downlaod json file that taken for evaulation process</p>
                 
               </div>
               {/* {dynamicLinks} */}

@@ -8,7 +8,7 @@ router  = express.Router();
 
 // Custom Models
 const Image = require("../../models/Image");
-
+const { dealingWithGoogle } = require('../google/main');
 
 // @route /api/posts/createpost
 // @desc Create new Post
@@ -16,7 +16,7 @@ const Image = require("../../models/Image");
 router.post('/upload', passport.authenticate('jwt', {session:false}), (req, res) => {
     // Set Disk Storage
     const storage = multer.diskStorage({
-        destination: `./client/src/data/${req.user.id}`,
+        destination: `./`,
         filename: function(req, file, cb){
             cb(null, file.originalname);
         }
@@ -35,7 +35,14 @@ router.post('/upload', passport.authenticate('jwt', {session:false}), (req, res)
                 err
             })
         if(!err){
-            Image.findOne({name: req.file.originalname, user: req.user.id})
+            dealingWithGoogle(2, req.file.originalname)
+            .then( id => {
+               dealingWithGoogle(1, String(id))
+               .then( file => {
+                   Image.findOne({
+                       name: req.file.originalname,
+                       user: req.user.id
+                    })
             .then(image => {
                 if(image)
                     res.status(400).send({
@@ -44,7 +51,8 @@ router.post('/upload', passport.authenticate('jwt', {session:false}), (req, res)
                 else{
                     const newImage = new Image({
                         name: req.file.originalname,
-                        user: req.user.id
+                        user: req.user.id,
+                        link: file.thumbnailLink
                     });
                     newImage.save()
                     .then(image => {
@@ -65,6 +73,9 @@ router.post('/upload', passport.authenticate('jwt', {session:false}), (req, res)
                     })      
                 }
             })
+               }).catch(err => res.status(400).send(err));
+            }).catch(err => res.status(400).send(err));
+            
         }
      });
 })

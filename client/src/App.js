@@ -19,6 +19,7 @@ import { setCurrentUser } from './actions/authAction';
 import { logoutUser } from './actions/authAction';
 
 import './App.css';
+import './components/responsive.css'
 if(localStorage.jwttoken){
   setAuthToken(localStorage.jwttoken);
   const decoded = jwt_decode(localStorage.jwttoken);

@@ -84,7 +84,7 @@ class Signup extends Component {
 
               <div className="form-group">
               <div className='row'>
-                <div className='col-md-6 pl-0'>
+                <div className='col-md-6 pass1'>
                 <label htmlFor="password1">Password</label>
                 <input 
                 type="password" 
@@ -101,7 +101,7 @@ class Signup extends Component {
                   </small>
                 ):null}
               </div>
-              <div className="col-md-6 pr-0">
+              <div className="col-md-6 pass2">
                 <label htmlFor="password2">Password</label>
                 <input 
                 type="password" 

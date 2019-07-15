@@ -26,23 +26,23 @@ class CreateFile extends Component {
       let type = document.getElementById('paperType_id').value;
 
       if(type === 'a3') {
-        document.getElementById('paperWidth_id').value= '30';
-        document.getElementById('paperHeight_id').value = '42'
+        document.getElementById('paperWidth_id').value= '300';
+        document.getElementById('paperHeight_id').value = '420'
       } else if(type  ===  'a4') {
         document.getElementById('paperWidth_id').value= '210';
         document.getElementById('paperHeight_id').value= '297'
       } else if(type  ===  'a5'){
-        document.getElementById('paperWidth_id').value= '15';
-        document.getElementById('paperHeight_id').value= '21'
+        document.getElementById('paperWidth_id').value= '150';
+        document.getElementById('paperHeight_id').value= '210'
       } else if (type  ===  'a6') {
-        document.getElementById('paperWidth_id').value= '10';
-        document.getElementById('paperHeight_id').value= '15'
+        document.getElementById('paperWidth_id').value= '100';
+        document.getElementById('paperHeight_id').value= '150'
       }  else if(type  ===  'a7') {
-        document.getElementById('paperWidth_id').value= '7';
-        document.getElementById('paperHeight_id').value= '10'
+        document.getElementById('paperWidth_id').value= '70';
+        document.getElementById('paperHeight_id').value= '100'
       }else if(type === 'a8') {
-        document.getElementById('paperWidth_id').value= '5';
-        document.getElementById('paperHeight_id').value= '7'
+        document.getElementById('paperWidth_id').value= '50';
+        document.getElementById('paperHeight_id').value= '70'
       }else {
         document.getElementById('paperWidth_id').value= '';
         document.getElementById('paperHeight_id').value= ''
@@ -65,7 +65,7 @@ class CreateFile extends Component {
       <div className='form-layout'>
         <div className='paperpage pt-5'>
           <div className='formpage'>
-        <form className='formStyle signupPadding  w-50 mx-auto' onSubmit={this.submit}>
+        <form className='formStyle signupPadding mx-auto' onSubmit={this.submit}>
           <h4 className='text-center'>Create New Paper</h4>
           <div className=''>
             <div className="form-group">
@@ -115,12 +115,12 @@ class CreateFile extends Component {
                 aria-describedby="emailHelp" 
                 placeholder="width"
                 defaultValue={this.state.width}
-                />
+                />mm
                 {errors.width?(
                   <small className="form-text text-danger">{errors.width}</small>
                 ): null}
               </div>
-              <div className="form-group col-md-4 pr-0">
+              <div className="form-group col-md-4 pr-0 paperheight">
                 <label htmlFor="height">Paper Height</label>
                 <input 
                 type="number"
@@ -132,7 +132,7 @@ class CreateFile extends Component {
                 aria-describedby="emailHelp" 
                 placeholder="height"
                 defaultValue={this.state.height}
-                />
+                />mm
                 {errors.height?(
                   <small className="form-text text-danger">{errors.height}</small>
                 ): null}

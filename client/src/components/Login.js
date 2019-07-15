@@ -55,7 +55,7 @@ class Login extends Component {
                 defaultValue={this.state.email}
                 />
                 {errors.email?(
-                  <small id="emailHelp" className="form-text error-text">{errors.email}</small>
+                  <small id="emailHelp" className="form-text text-danger">{errors.email}</small>
                 ): null}
             </div>
             <div className="form-group">
@@ -70,7 +70,7 @@ class Login extends Component {
               defaultValue={this.state.password1}
               />
               {errors.password?(
-                <small id="emailHelp" className="form-text error-text">{errors.password}</small>
+                <small id="emailHelp" className="form-text text-danger">{errors.password}</small>
               ):null}
             </div>
             <button type="submit" className="btn mt-2 w-100 mb-3">Login</button>

@@ -72,7 +72,17 @@ const CorrectionPaper = (props) => {
     const answerClicked = e => {
         console.log('Answer');
         if(e.target.style.background === 'transparent'){
-            e.target.style.background = 'black';
+            let sibling = e.target.parentNode.firstChild;
+            let countAll = -1, countBlack = 0;
+            while(sibling){
+                ++countAll;
+                if(sibling.style.background === 'black')
+                    ++countBlack;
+                sibling = sibling.nextSibling
+            }
+            if( countBlack + 1 < countAll ){
+                e.target.style.background = 'black';
+            }
         }else e.target.style.background = 'transparent';
     }  
     let { questionBlockArray,

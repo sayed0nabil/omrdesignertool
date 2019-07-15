@@ -39,5 +39,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "https://omrdesignertool.herokuapp.com"
+  "proxy": "http://localhost"
 }
