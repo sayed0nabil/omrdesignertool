@@ -11,6 +11,7 @@ const Paper = require('../../models/Paper'),
       Image = require('../../models/Image');
 // Validation Modules
 const createPaperValidationErrors = require('../../validations/createpapervalidation');
+const { dealingWithGoogle } = require('../google/main');
 // @router GET /api/papers
 // @desc   See My Papers
 // @access public 
@@ -130,10 +131,21 @@ router.get('/preview/:paperId/:userId', (req, res) => {
     .then(paper => {
         if(paper){
             Image.find({user: req.params.userId})
-            .then( images => {
+            .then( async images => {
+                let imgs = [];
+                await Promise.all(images.map(async img => {
+                    await dealingWithGoogle(1, img.link)
+                    .then( file => {
+                        imgs.push({
+                            name: img.name,
+                            link: file.thumbnailLink
+                        })
+                    }).catch(err => res.status(400).send(err));
+                }))
+                // console.log(imgs);
                 res.send({
                     ...JSON.parse(paper.content),
-                    images
+                    images: imgs
                 });
             })
         }else{

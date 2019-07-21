@@ -12,8 +12,8 @@ const users   = require('./routes/api/users'),
 // Default Settings
 const app = express(),
       port  = process.env.PORT || 4000,
-     mongodbURI = 'mongodb+srv://seko:seko@mernstackfronttoback-qiptm.mongodb.net/omrdesignertooldb?retryWrites=true';
-            // mongodbURI = 'mongodb://localhost:27017/ssgprojectdb';
+    mongodbURI = 'mongodb+srv://seko:seko@mernstackfronttoback-qiptm.mongodb.net/omrdesignertooldb?retryWrites=true';
+            //  mongodbURI = 'mongodb://localhost:27017/ssgprojectdb';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
