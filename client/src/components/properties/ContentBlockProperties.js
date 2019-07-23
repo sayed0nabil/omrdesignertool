@@ -4,7 +4,7 @@ export default function ContentBlockProperties({
     contentBlockArray,
     contentDetermined,
     contentBlockChange,
-    images
+    urls
 }) {
     let rootContentBlockElement =
     contentBlockArray[contentDetermined[contentDetermined.length - 1].index];
@@ -30,10 +30,10 @@ export default function ContentBlockProperties({
                             </span>
                             <select className="form-control form-control-sm" name='img' value={item.img} onChange={contentBlockChange}>
                                 <option value='none'>None</option>
-                                {images.map(image => (
+                                {Object.entries(urls).map(url => (
                                     <option 
-                                    key={image._id}
-                                    value={image.link}>{image.name}</option>
+                                    key={url[0]}
+                                    value={url[0]}>{url[0]}</option>
                                 ))}
                             </select>
                         </div>

@@ -78,19 +78,19 @@ router.post('/upload', passport.authenticate('jwt', {session:false}), (req, res)
 })
 
 router.post('/getImage', passport.authenticate('jwt', {session:false}), (req, res) => {
-    Image.findOne({
-        name: req.body.name,
-        user: req.user.id
-     }).then( img => {
-         if(img){
-            dealingWithGoogle(1, img.link)
-            .then( file => {
-                res.send(file);
-            }).catch(err => res.status(400).send(err));
-         }else{
-             res.status(404).send({img: 'Image Not Found'})
-         }
-     }).catch(err => res.status(400).send(err))
+        Image.findOne({
+            name: req.body.name,
+            user: req.user.id
+         }).then( img => {
+             if(img){
+                dealingWithGoogle(1, img.link)
+                .then( file => {
+                    res.send(file);
+                }).catch(err => res.status(400).send(err));
+             }else{
+                 res.status(404).send({img: 'Image Not Found'})
+             }
+         }).catch(err => res.status(400).send(err))
 })
 
 module.exports = router;

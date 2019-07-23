@@ -49,35 +49,35 @@ const paper = (props) => {
         }
         else{
             console.log('Item', item);
-            return(
-                <div style={{
-                    display: 'flex',
-                    minWidth: '100px',
-                    minHeight: '40px',
-                    border: `${item.borderWidth}px ${item.borderStyle} ${item.borderColor}`,
-                    paddingTop: item.padding + item.paddingTop + 'px',
-                    paddingBottom: item.padding + item.paddingBottom + 'px',
-                    paddingLeft: item.padding + item.paddingLeft + 'px',
-                    paddingRight: item.padding + item.paddingRight + 'px',
-                    pointer: 'cursor',
-                    color: item.color,
-                    background: item.backgroundt === 'none'?item.background:item.backgroundt,
-                    backgroundImage: item.img !== 'none' && item.img?`url(${item.img})`:null,
-                    backgroundSize: '100% 100%',
-                    justifyContent: item.textAlign,
-                    alignItems: item.alignItems,
-                    fontSize: item.fontSize,
-                    fontWeight: item.fontWeight,
-                    borderRadius: item.borderRadius + '%',
-                    borderWidth: item.borderWidth + 'px ',
-                    borderStyle: item.borderStyle,
-                    borderColor: item.borderColor,
-                }}
-                onClick={(e) => {
-                    contentClicked(index);
-                }}
-                key={`w${index}`}>{item.img==='none'?item.content:null }</div>
-            )
+                return(
+                    <div style={{
+                        display: 'flex',
+                        minWidth: '100px',
+                        minHeight: '40px',
+                        border: `${item.borderWidth}px ${item.borderStyle} ${item.borderColor}`,
+                        paddingTop: item.padding + item.paddingTop + 'px',
+                        paddingBottom: item.padding + item.paddingBottom + 'px',
+                        paddingLeft: item.padding + item.paddingLeft + 'px',
+                        paddingRight: item.padding + item.paddingRight + 'px',
+                        pointer: 'cursor',
+                        color: item.color,
+                        background: item.backgroundt === 'none'?item.background:item.backgroundt,
+                        backgroundImage: item.img !== 'none' && item.img?`url(${props.data.urls[item.img]})`:null,
+                        backgroundSize: '100% 100%',
+                        justifyContent: item.textAlign,
+                        alignItems: item.alignItems,
+                        fontSize: item.fontSize,
+                        fontWeight: item.fontWeight,
+                        borderRadius: item.borderRadius + '%',
+                        borderWidth: item.borderWidth + 'px ',
+                        borderStyle: item.borderStyle,
+                        borderColor: item.borderColor,
+                    }}
+                    onClick={(e) => {
+                        contentClicked(index);
+                    }}
+                    key={`w${index}`}>{item.img==='none'?item.content:null }</div>
+                )
         }
     }
     let  paperStyling  = {

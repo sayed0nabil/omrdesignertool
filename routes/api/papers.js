@@ -132,20 +132,16 @@ router.get('/preview/:paperId/:userId', (req, res) => {
         if(paper){
             Image.find({user: req.params.userId})
             .then( async images => {
-                let imgs = [];
+                let imgs = [], urls = {};
                 await Promise.all(images.map(async img => {
                     await dealingWithGoogle(1, img.link)
                     .then( file => {
-                        imgs.push({
-                            name: img.name,
-                            link: file.thumbnailLink
-                        })
+                        urls[img.name] = file.thumbnailLink;
                     }).catch(err => res.status(400).send(err));
                 }))
-                // console.log(imgs);
                 res.send({
                     ...JSON.parse(paper.content),
-                    images: imgs
+                    urls
                 });
             })
         }else{

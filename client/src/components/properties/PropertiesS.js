@@ -41,7 +41,7 @@ function PropertiesS({
       contentBlockArray={contentBlockArray}
       contentDetermined={contentDetermined}
       contentBlockChange={contentBlockChange}
-      images={data.images}/>
+      urls={data.urls}/>
       )
     }else if(seatNumberDetermined){
       CustomProperties = (
